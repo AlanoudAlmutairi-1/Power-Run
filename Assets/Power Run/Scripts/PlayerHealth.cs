@@ -6,9 +6,16 @@ public class PlayerHealth : MonoBehaviour
 
     public GameStateController gameStateController;
 
+    public AudioClip hitSound;
+
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (hitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
 
         if (health <= 0)
         {
